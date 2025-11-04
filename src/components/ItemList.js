@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-function ItemList() {
+function ItemList({ onSelect }) {
   const items = [
     { id: 1, name: "Item 1", description: "Description for Item 1" },
     { id: 2, name: "Item 2", description: "Description for Item 2" },
@@ -14,7 +13,10 @@ function ItemList() {
       <ul>
         {items.map((item) => (
           <li key={item.id}>
-            <Link to={`/items/${item.id}`}>{item.name}</Link>
+    
+            <a href="#" onClick={(e) => { e.preventDefault(); onSelect(item.id); }}>
+              {item.name}
+            </a>
           </li>
         ))}
       </ul>
